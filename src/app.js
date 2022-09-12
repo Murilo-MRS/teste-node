@@ -15,6 +15,13 @@ const teams = [
 
 const app = express();
 
-app.get('/teams', (req, res) => res.status(200).json({ teams }));
+// CADASTRAR REQUISITAR COM METODO GET
+// app.get('/teams', (req, res) => res.status(200).json({ teams }));
+// CADASTRAR NOVOS TIMES COPM METODO POST
+app.post('/teams', (req, res) => {
+    const newTeam = {...req.body};
+    teams.push(newTeam);
+    res.status(201).json({ team: newTeam });
+});
 // app.get('/teams', (req, res) => res.status(200).json({ message: 'Olá Mundo!' }));
 module.exports = app;
